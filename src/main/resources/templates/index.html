@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<style>
+.cond {
+background: #c2c2c3;
+width: fit-content;
+padding: 30px;
+border: 1px solid;
+}
+
+.cond input, select {
+padding: 10px;
+margin: 10px;
+width:90px;
+}
+
+.cond button{
+padding: 10px;
+margin: 10px;
+display:block;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Кондиционер</title>
+</head>
+<body>
+<form action="get_result" class="cond">
+  <table>
+    <tr><td>Выберите режим</td><td>
+      <select name="mode">
+      <option value="freeze">freeze</option>
+      <option value="heat">heat</option>
+      <option value="auto">auto</option>
+      <option value="fan">fan</option>
+    </select>
+    </td></tr>
+    <tr><td>Желаемая температура</td><td><input name="wanted"></td></tr>
+    <tr><td>Текущая температура</td><td><input name="current"></td></tr>
+  </table>
+    <button>Вычислить</button>
+</form>
+<p class="res" th:if="${res!=null}">Температура через час: <b th:text="${res}"></b></p>
+<p class="res" th:if="${errorMsg!=null}">Error: <b th:text="${errorMsg}"></b></p>
+
+<div th:if="${history}!=null">
+  <p>Предыдущие значения:</p>
+  <table><tr th:each="row : ${history}"><td th:text="${row}"></td></tr></table>
+</div>
+</body>
+</html>
