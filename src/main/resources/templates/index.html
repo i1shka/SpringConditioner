@@ -19,6 +19,12 @@ padding: 10px;
 margin: 10px;
 display:block;
 }
+
+.history tr:nth-child(2n) {
+    background: #f0f0f0; /* Цвет фона */
+   }
+
+.history td {padding: 15px 5px;}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -45,7 +51,7 @@ display:block;
 
 <div th:if="${history}!=null">
   <p>Предыдущие значения:</p>
-  <table><tr th:each="row : ${history}"><td th:text="${row}"></td></tr></table>
+  <table class="history"><tr th:each="row : ${history}"><td th:text="${row}"></td></tr></table>
 </div>
 </body>
 </html>
